@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Propagation</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt velit ipsum, ut scelerisque risus sodales at. Sed vehicula ligula diam. Sed viverra molestie lobortis. Pellentesque ornare lorem ut nisi molestie, at tempor est efficitur. Vivamus sem mi, ullamcorper sit amet dolor in, fermentum suscipit eros. </string>
 </resources>
