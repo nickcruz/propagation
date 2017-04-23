@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshLayout"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    tools:context="me.nickcruz.propagation.MainActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/cardViewA"
+            style="@style/CardViewText"
+            android:layout_marginTop="24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="24dp"
+            android:text="A"/>
+
+        <TextView
+            android:id="@+id/cardViewB"
+            style="@style/CardViewText"
+            app:layout_constraintLeft_toRightOf="@+id/cardViewA"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toTopOf="@+id/cardViewA"
+            app:layout_constraintBottom_toBottomOf="@+id/cardViewA"
+            android:text="B"/>
+
+        <TextView
+            android:id="@+id/cardViewC"
+            style="@style/CardViewText"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintLeft_toLeftOf="@+id/cardViewA"
+            app:layout_constraintRight_toRightOf="@+id/cardViewA"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewA"
+            android:text="C" />
+
+        <TextView
+            android:id="@+id/cardViewD"
+            style="@style/CardViewText"
+            app:layout_constraintLeft_toLeftOf="@+id/cardViewB"
+            app:layout_constraintRight_toRightOf="@+id/cardViewB"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewA"
+            app:layout_constraintHorizontal_bias="1.0"
+            android:layout_marginRight="0dp"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardViewC"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.0"
+            android:text="D" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.SwipeRefreshLayout>
