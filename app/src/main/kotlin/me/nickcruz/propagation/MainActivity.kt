@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
                     transition = TransitionSet()
                             .addTransition(Fade(Fade.IN)
                                     .setInterpolator { (it - 0.5f) * 2 })
-                            .addTransition(Slide(Gravity.TOP))
+                            .addTransition(Slide(Gravity.BOTTOM))
                     )
                     .start()
             swipeRefreshLayout.isRefreshing = false

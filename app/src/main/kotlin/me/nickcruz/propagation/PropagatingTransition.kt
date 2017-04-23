@@ -14,7 +14,7 @@ class PropagatingTransition(
         val sceneRoot: ViewGroup,
         var startingView: View? = null,
         val transition: Transition = Fade(Fade.IN),
-        duration: Long = 500,
+        duration: Long = 600,
         interpolator: Interpolator = LinearOutSlowInInterpolator(),
         propagation: TransitionPropagation = CircularPropagation()) {
 
