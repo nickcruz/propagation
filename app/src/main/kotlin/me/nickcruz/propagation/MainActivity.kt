@@ -16,12 +16,15 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Flight Details"
 
+        // These are inside a refresh layout so we can easily "refresh" and see the transition again.
         swipeRefreshLayout.setOnRefreshListener {
-            CustomTransition(sceneRoot = constraintLayout,
+            PropagatingTransition(sceneRoot = constraintLayout,
                     startingView = imageIcon,
                     transition = TransitionSet()
-                            .addTransition(Fade(Fade.IN).setStartDelay(400))
-                            .addTransition(Slide(Gravity.TOP)))
+                            .addTransition(Fade(Fade.IN)
+                                    .setInterpolator { (it - 0.5f) * 2 })
+                            .addTransition(Slide(Gravity.TOP))
+                    )
                     .start()
             swipeRefreshLayout.isRefreshing = false
         }

@@ -10,11 +10,11 @@ import android.view.animation.Interpolator
 /**
  * Created by Nick Cruz on 4/23/17
  */
-class CustomTransition(
+class PropagatingTransition(
         val sceneRoot: ViewGroup,
         var startingView: View? = null,
         val transition: Transition = Fade(Fade.IN),
-        duration: Long = 800,
+        duration: Long = 500,
         interpolator: Interpolator = LinearOutSlowInInterpolator(),
         propagation: TransitionPropagation = CircularPropagation()) {
 
@@ -23,23 +23,39 @@ class CustomTransition(
     init {
         targets = (0 until sceneRoot.childCount).map { sceneRoot.getChildAt(it) }
         transition.interpolator = interpolator
-        transition.propagation = propagation
         transition.duration = duration
+
+        // Setting the transition's propagation. By default we will receive a CircularPropagation.
+        transition.propagation = propagation
     }
 
     fun start() {
         if (startingView == null && sceneRoot.childCount > 0) {
             startingView = sceneRoot.getChildAt(0)
         }
+
+        // Setting the transition's epicenter for its propagation. By default the epicenter shall
+        // be the first child in the view, but a view can be passed in with this class's
+        // constructor.
         transition.epicenterCallback = (startingView ?: sceneRoot).asEpicenter()
 
+        // Before starting the transition, hide the elements in the view.
         targets.forEach { it.visibility = View.INVISIBLE }
 
+        // Begin a delayed transition. After calling this, the TransitionManager will be waiting for
+        // any changes in the layout and then animate those changes when they occur based on its
+        // given transition.
         TransitionManager.beginDelayedTransition(sceneRoot, transition)
 
+        // Set the targets to be visible, which starts the transition.
         targets.forEach { it.visibility = View.VISIBLE }
     }
 
+    /**
+     * @return Returns this view as an epicenter callback. In order to work with the Transition
+     * framework, we retrieve the global visible Rect of the View in order to establish that as the
+     * starting view.
+     */
     private fun View.asEpicenter() : Transition.EpicenterCallback {
         val viewRect = Rect()
         getGlobalVisibleRect(viewRect)
